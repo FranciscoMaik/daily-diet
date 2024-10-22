@@ -2,14 +2,16 @@ import { Header } from "@components/Header";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const Home: React.FC = () => {
-	const { top } = useSafeAreaInsets();
+import * as S from "./styles";
 
-	return (
-		<View style={{ marginTop: top, padding: 24 }}>
-			<Header />
-		</View>
-	);
+const Home: React.FC = () => {
+  const { top } = useSafeAreaInsets();
+
+  return (
+    <S.Container style={{ marginTop: top }}>
+      <Header />
+    </S.Container>
+  );
 };
 
 export default Home;

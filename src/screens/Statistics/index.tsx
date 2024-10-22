@@ -1,70 +1,36 @@
-import { Text, View } from "react-native";
-
 import Feather from "@expo/vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-// import { Container } from './styles';
+import * as S from "./styles";
+import { useTheme } from "styled-components/native";
 
 const basePercentage = 40;
 
 const Statistics: React.FC = () => {
-	const { goBack } = useNavigation();
-	const { top } = useSafeAreaInsets();
+  const { goBack } = useNavigation();
+  const { top } = useSafeAreaInsets();
+  const { COLORS } = useTheme();
 
-	return (
-		<View
-			style={{
-				backgroundColor: basePercentage >= 50 ? "#E5F0DB" : "#F4E6E7",
-				flex: 1,
-				marginTop: top,
-			}}
-		>
-			<View
-				style={{
-					paddingHorizontal: 16,
-					paddingVertical: 20,
-					alignItems: "center",
-					justifyContent: "center",
-					gap: 8,
-					position: "relative",
-					height: 200,
-				}}
-			>
-				<Feather
-					name="arrow-left"
-					size={28}
-					color={basePercentage >= 50 ? "#639339" : "#BF3B44"}
-					style={{ position: "absolute", top: 24, left: 24 }}
-					onPress={goBack}
-				/>
-				<Text
-					style={{
-						fontSize: 32,
-						fontWeight: "bold",
-					}}
-				>
-					90,86%
-				</Text>
-				<Text>das refeições dentro da dieta</Text>
-			</View>
+  return (
+    <S.Container basePercentage={basePercentage} mt={top}>
+      <S.Header>
+        <Feather
+          name="arrow-left"
+          size={28}
+          color={basePercentage >= 50 ? COLORS.GREEN_DARK : COLORS.RED_DARK}
+          style={{ position: "absolute", top: 24, left: 24 }}
+          onPress={goBack}
+        />
+        <S.Title>90,86%</S.Title>
+        <S.Subtitle>das refeições dentro da dieta</S.Subtitle>
+      </S.Header>
 
-			<View
-				style={{
-					backgroundColor: "#FAFAFA",
-					flex: 1,
-					alignItems: "center",
-					borderTopEndRadius: 32,
-					borderTopStartRadius: 32,
-					marginTop: -16,
-					paddingHorizontal: 24,
-					paddingVertical: 32,
-				}}
-			>
-				<Text>Estatísticas gerais</Text>
-			</View>
-		</View>
-	);
+      <S.Body>
+        <S.BodyTitle>Estatísticas gerais</S.BodyTitle>
+      </S.Body>
+    </S.Container>
+  );
 };
 
 export default Statistics;

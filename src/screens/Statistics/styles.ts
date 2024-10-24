@@ -48,3 +48,16 @@ export const BodyTitle = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
 `;
+
+export const ContentInfos = styled.View`
+  gap: 12px;
+  width: 100%;
+  margin-top: 18px;
+  height: 100%;
+`;
+
+export const RowInfo = styled.View`
+  flex-direction: row;
+  gap: 12px;
+  justify-content: space-between;
+`;

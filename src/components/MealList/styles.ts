@@ -1,17 +1,13 @@
 import styled, { css } from "styled-components/native";
 
-export const Container = styled.View`
-
-`;
-
 export const SectionTitle = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   color: ${({ theme }) => theme.COLORS.GRAY_1};
-  margin-bottom: 14px;
+  margin-bottom: -14px;
 `;
 
-export const ItemContainer = styled.View`
+export const ItemContainer = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
 

@@ -58,26 +58,25 @@ const mockList: ListProps["list"] = [
 
 export const MealList: React.FC = () => {
   return (
-    <S.Container>
-      <SectionList
-        sections={mockList}
-        keyExtractor={(item) => item.id}
-        renderSectionHeader={({ section }) => (
-          <S.SectionTitle>{section.title}</S.SectionTitle>
-        )}
-        renderItem={({ item }) => (
-          <S.ItemContainer>
-            <S.Hour>{item.hour}</S.Hour>
-            <S.Divider />
-            <S.ContentInfo>
-              <S.Description lineBreakMode="tail" numberOfLines={1}>
-                {item.name}
-              </S.Description>
-              <S.StatusDiet inDiet={item.inDiet} />
-            </S.ContentInfo>
-          </S.ItemContainer>
-        )}
-      />
-    </S.Container>
+    <SectionList
+      sections={mockList}
+      keyExtractor={(item) => item.id}
+      renderSectionHeader={({ section }) => (
+        <S.SectionTitle>{section.title}</S.SectionTitle>
+      )}
+      renderItem={({ item }) => (
+        <S.ItemContainer activeOpacity={0.7}>
+          <S.Hour>{item.hour}</S.Hour>
+          <S.Divider />
+          <S.ContentInfo>
+            <S.Description lineBreakMode="tail" numberOfLines={1}>
+              {item.name}
+            </S.Description>
+            <S.StatusDiet inDiet={item.inDiet} />
+          </S.ContentInfo>
+        </S.ItemContainer>
+      )}
+      SectionSeparatorComponent={() => <View style={{ height: 32 }} />}
+    />
   );
 };

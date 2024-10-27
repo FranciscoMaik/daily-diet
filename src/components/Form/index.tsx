@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useWindowDimensions } from "react-native";
 
 import type { IDiet } from "src/types/IDiet";
 
@@ -8,12 +7,13 @@ import { Button } from "@components/Button";
 import { ButtonSelect } from "@components/ButtonSelect";
 
 import * as S from "./styles";
+import { ModalConfirmation } from "@components/ModalConfirmation";
 interface FormProps {
   diet?: IDiet;
 }
 
 export const Form: React.FC<FormProps> = ({ diet }) => {
-  const { width } = useWindowDimensions();
+  const [showModal, setShowModal] = useState(false);
 
   const [name, setName] = useState(diet?.name || "");
   const [description, setDescription] = useState(diet?.description || "");
@@ -39,35 +39,47 @@ export const Form: React.FC<FormProps> = ({ diet }) => {
     setHour(format);
   };
 
-  return (
-    <S.Container>
-      <S.BaseForm>
-        <InputWithLabel label="Nome" value={name} onChangeText={setName} />
-        <InputWithLabel
-          label="Descrição"
-          numberOfLines={4}
-          multiline={true}
-          value={description}
-          onChangeText={setDescription}
-        />
-        <S.ContentDate>
-          <InputWithLabel
-            label="Data"
-            value={date}
-            onChangeText={handleChangeDate}
-            maxLength={10}
-          />
-          <InputWithLabel
-            label="Hora"
-            value={hour}
-            onChangeText={handleChangeHour}
-            maxLength={5}
-          />
-        </S.ContentDate>
-        <ButtonSelect itemSelected={inDiet} onSelect={handleSelect} />
-      </S.BaseForm>
+  const handleSave = () => {
+    setShowModal(true);
+  };
 
-      <Button title="Cadastrar refeição" />
-    </S.Container>
+  return (
+    <>
+      <S.Container>
+        <S.BaseForm>
+          <InputWithLabel label="Nome" value={name} onChangeText={setName} />
+          <InputWithLabel
+            label="Descrição"
+            numberOfLines={4}
+            multiline={true}
+            value={description}
+            onChangeText={setDescription}
+          />
+          <S.ContentDate>
+            <InputWithLabel
+              label="Data"
+              value={date}
+              onChangeText={handleChangeDate}
+              maxLength={10}
+            />
+            <InputWithLabel
+              label="Hora"
+              value={hour}
+              onChangeText={handleChangeHour}
+              maxLength={5}
+            />
+          </S.ContentDate>
+          <ButtonSelect itemSelected={inDiet} onSelect={handleSelect} />
+        </S.BaseForm>
+
+        <Button title="Cadastrar refeição" onPress={handleSave} />
+      </S.Container>
+
+      <ModalConfirmation
+        inDiet={inDiet === "yes"}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
+    </>
   );
 };

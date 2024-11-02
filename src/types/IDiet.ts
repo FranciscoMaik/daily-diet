@@ -1,5 +1,5 @@
 export interface IDiet {
-  id: number;
+  id: string;
   name: string;
   description: string;
   date: string;

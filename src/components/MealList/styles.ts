@@ -59,3 +59,15 @@ export const StatusDiet = styled.View<StatusDietProps>`
     background-color: ${inDiet ? theme.COLORS.GREEN_MID : theme.COLORS.RED_MID};
   `}
 `;
+
+export const EmptyList = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const EmptyListText = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  color: ${({ theme }) => theme.COLORS.GRAY_3};
+`;

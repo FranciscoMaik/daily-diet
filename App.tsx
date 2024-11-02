@@ -1,7 +1,10 @@
+import "react-native-get-random-values";
 import { ActivityIndicator } from "react-native";
-import Public from "@routes/public.routes";
 import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components";
+
+import Public from "@routes/public.routes";
+
 import {
   NunitoSans_400Regular,
   NunitoSans_700Bold,

@@ -39,6 +39,7 @@ export const Form: React.FC<FormProps> = ({ diet }) => {
     const format = text
       .replace(/\D/g, "")
       .replace(/(\d{2})(\d{2})(\d)/, "$1/$2/$3");
+
     setDate(format);
   };
 

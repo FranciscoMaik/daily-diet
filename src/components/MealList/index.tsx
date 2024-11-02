@@ -24,8 +24,9 @@ export const MealList: React.FC = () => {
     <SectionList
       sections={list}
       keyExtractor={(item) => item.id}
+      showsVerticalScrollIndicator={false}
       renderSectionHeader={({ section }) => (
-        <S.SectionTitle>{section.title}</S.SectionTitle>
+        <S.SectionTitle>{section.title.split("/").join(".")}</S.SectionTitle>
       )}
       renderItem={({ item }) => (
         <S.ItemContainer

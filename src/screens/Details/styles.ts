@@ -59,6 +59,7 @@ export const CardStatus = styled.View`
   flex-direction: row;
   align-items: center;
   padding: 8px 16px;
+  width: 144px;
   border-radius: 1000px;
 `;
 
